@@ -28,8 +28,8 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html'
-      }),
+            template: './src/index.html',
+        }),
     ],
 
     module: {
@@ -45,22 +45,31 @@ module.exports = {
 
     optimization: {
         splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            automaticNameMaxLength: 30,
+            name: true,
             cacheGroups: {
                 vendors: {
-                    priority: -10,
                     test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,
                 },
             },
-
-            chunks: 'async',
-            minChunks: 1,
-            minSize: 30000,
-            name: true,
         },
     },
 
     devServer: {
-        port: "9000",
+        port: '9000',
         open: true,
     },
 
