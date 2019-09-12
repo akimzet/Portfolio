@@ -29,6 +29,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            favicon: "./src/favicon.png"
         }),
     ],
 
@@ -39,6 +40,10 @@ module.exports = {
                 loader: 'ts-loader',
                 include: [path.resolve(__dirname, 'src')],
                 exclude: [/node_modules/],
+            },
+            {
+                test: /\.(png|jpe?g|gif)$/i,
+                loader: 'file-loader',
             },
         ],
     },
