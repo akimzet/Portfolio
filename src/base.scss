@@ -1,0 +1,50 @@
+// Variables
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #161616 !default;
+$primary: #64a19d !default;
+
+@import './components/navbar/navbar';
+@import './components/header/header';
+// @import 'about.scss';
+// @import 'projects.scss';
+// @import 'signup.scss';
+// @import 'contact.scss';
+
+body {
+    font-family: 'Nunito';
+    letter-spacing: 0.0625em;
+}
+
+a {
+    color: $primary;
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color: darken($primary, 20%);
+    }
+}
+
+.bg-black {
+    background-color: $black !important;
+}
+
+.bg-primary {
+    background-color: $primary !important;
+}
+
+.text-primary {
+    color: $primary !important;
+}
+
+footer {
+    padding: 5rem 0;
+}
