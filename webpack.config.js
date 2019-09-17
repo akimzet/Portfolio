@@ -3,21 +3,23 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'inline-source-map',
 
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist'),
     },
 
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            favicon: "./src/favicon.png"
+            favicon: './src/favicon.png',
         }),
+        new CleanWebpackPlugin(),
     ],
 
     module: {
@@ -31,27 +33,27 @@ module.exports = {
             },
             {
                 // Files
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(png|jpe?g|gif|pdf)$/i,
                 loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                  },
             },
             {
                 // Sass files
                 test: /\.s[ac]ss$/i,
                 loader: [
-                  // Creates `style` nodes from JS strings
-                  'style-loader',
-                  // Translates CSS into CommonJS
-                  'css-loader',
-                  // Compiles Sass to CSS
-                  'sass-loader',
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                    // Compiles Sass to CSS
+                    'sass-loader',
                 ],
             },
             {
                 test: /\.css$/i,
-                loader: [
-                    'style-loader', 
-                    'css-loader'
-                ],
+                loader: ['style-loader', 'css-loader'],
             },
         ],
     },

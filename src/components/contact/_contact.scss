@@ -1,0 +1,32 @@
+.contact-section {
+    padding: 5rem 0 0;
+    .card {
+        border: 0;
+        border-bottom: 0.25rem solid $primary;
+        h4 {
+            font-size: 0.8rem;
+            font-family: 'Varela Round';
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+        }
+        hr {
+            border-color: $primary;
+            border-width: 0.25rem;
+            width: 3rem;
+        }
+    }
+}
+
+.contact-btn-primary {
+    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+    padding: 0.5rem 0.5rem;
+    font-family: 'Varela Round';
+    font-size: 80%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    border: 0;
+}
+
+.contact-btn-text {
+    color: white;
+}

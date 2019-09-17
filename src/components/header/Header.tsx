@@ -10,7 +10,7 @@ const Header: React.FC = () => {
                     <h2 className="text-white-50 mx-auto mt-2 mb-5">
                         Hi, I'm Andrew. I design and develop user interfaces and backend services.
                     </h2>
-                    <Button href="#about" id="header-btn-primary">
+                    <Button href="#about" className="header-btn-primary">
                         Get Started
                     </Button>
                 </div>
