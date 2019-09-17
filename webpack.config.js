@@ -5,65 +5,67 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-module.exports = {
-    entry: './src/index.tsx',
-    devtool: 'inline-source-map',
+module.exports = (env, argv) => {
+    return {
+        entry: './src/index.tsx',
+        devtool: 'inline-source-map',
 
-    output: {
-        filename: '[name].[hash].js',
-        path: path.resolve(__dirname, 'dist'),
-    },
+        output: {
+            filename: '[name].[hash].js',
+            path: path.resolve(__dirname, 'dist'),
+        },
 
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            favicon: './src/favicon.png',
-        }),
-        new CleanWebpackPlugin(),
-    ],
-
-    module: {
-        rules: [
-            {
-                // Typescript + React
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                include: [path.resolve(__dirname, 'src')],
-                exclude: [/node_modules/],
-            },
-            {
-                // Files
-                test: /\.(png|jpe?g|gif|pdf)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                  },
-            },
-            {
-                // Sass files
-                test: /\.s[ac]ss$/i,
-                loader: [
-                    // Creates `style` nodes from JS strings
-                    'style-loader',
-                    // Translates CSS into CommonJS
-                    'css-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-                ],
-            },
-            {
-                test: /\.css$/i,
-                loader: ['style-loader', 'css-loader'],
-            },
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: './src/index.html',
+                favicon: './src/favicon.png',
+            }),
+            new CleanWebpackPlugin(),
         ],
-    },
 
-    devServer: {
-        port: '9000',
-        open: true,
-    },
+        module: {
+            rules: [
+                {
+                    // Typescript + React
+                    test: /\.tsx?$/,
+                    loader: 'ts-loader',
+                    include: [path.resolve(__dirname, 'src')],
+                    exclude: [/node_modules/],
+                },
+                {
+                    // Files
+                    test: /\.(pdf|png|svg|jpg|jpeg|gif)$/,
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]',
+                    },
+                },
+                {
+                    // Sass files
+                    test: /\.s[ac]ss$/i,
+                    loader: [
+                        // Creates `style` nodes from JS strings
+                        'style-loader',
+                        // Translates CSS into CommonJS
+                        'css-loader',
+                        // Compiles Sass to CSS
+                        'sass-loader',
+                    ],
+                },
+                {
+                    test: /\.css$/i,
+                    loader: ['style-loader', 'css-loader'],
+                },
+            ],
+        },
 
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
-    },
+        devServer: {
+            port: '9000',
+            open: true,
+        },
+
+        resolve: {
+            extensions: ['.tsx', '.ts', '.js', '.css', '.scss'],
+        },
+    };
 };
