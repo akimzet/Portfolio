@@ -1,33 +1,86 @@
 import * as React from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
 import { Navbar, Nav } from 'react-bootstrap';
 
-const AppNavbar: React.FC = () => {
-    return (
-        <Navbar className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" expand="lg">
-            <div className="container">
-                <Navbar.Brand href="#home" className="navbar-brand">
-                    Andrew Kim
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggler navbar-toggler-right">
-                    Menu
-                    <i className="fas-fa-bar" />
-                </Navbar.Toggle>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link className="nav-link" href="#about">
-                            About
-                        </Nav.Link>
-                        <Nav.Link className="nav-link" href="#project">
-                            Projects
-                        </Nav.Link>
-                        <Nav.Link className="nav-link" href="#contact">
-                            Contact
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </div>
-        </Navbar>
-    );
+interface State {
+    activeClass: string;
+}
+
+const scrollToTop = () => {
+    scroll.scrollToTop();
 };
 
-export default AppNavbar;
+export default class AppNavbar extends React.Component<{}, State> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeClass: '',
+        };
+    }
+    componentDidMount() {
+        window.addEventListener('scroll', () => {
+            let activeClass = 'navbar-shrink';
+            if (window.scrollY === 0) {
+                activeClass = '';
+            }
+            this.setState({ activeClass });
+        });
+    }
+    render() {
+        console.log(this.state);
+        return (
+            <Navbar
+                className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.activeClass}`}
+                id="mainNav"
+                expand="lg"
+            >
+                <div className="container">
+                    <Navbar.Brand className="navbar-brand" onClick={scrollToTop}>
+                        Andrew Kim
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggler navbar-toggler-right">
+                        Menu
+                        <i className="fas-fa-bar" />
+                    </Navbar.Toggle>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="ml-auto">
+                            <Link
+                                className="nav-link"
+                                activeClass="active"
+                                to="about"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                            >
+                                About
+                            </Link>
+                            <Link
+                                className="nav-link"
+                                activeClass="active"
+                                to="project"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                            >
+                                Project
+                            </Link>
+                            <Link
+                                className="nav-link"
+                                activeClass="active"
+                                to="contact"
+                                spy={true}
+                                smooth={true}
+                                offset={-560}
+                                duration={500}
+                            >
+                                Contact
+                            </Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </div>
+            </Navbar>
+        );
+    }
+}
