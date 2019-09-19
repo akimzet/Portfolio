@@ -1,16 +1,16 @@
 import * as React from 'react';
 
+import HololensImg from './Hololens.jpg';
+import ProductManagerImg from './ProductManager.png';
+import WeatherApplication from './WeatherApplication.png';
+
 const Project: React.FC = () => {
     return (
         <section id="projects" className="projects-section bg-light">
             <div className="container" id="project">
                 <div className="row align-items-center no-gutters mb-4 mb-lg-5">
                     <div className="col-xl-8 col-lg-7">
-                        <img
-                            className="img-fluid mb-3 mb-lg-0"
-                            src="../src/components/project/Hololens.jpg"
-                            alt=""
-                        ></img>
+                        <img className="img-fluid mb-3 mb-lg-0" src={HololensImg} alt=""></img>
                     </div>
                     <div className="col-xl-4 col-lg-5">
                         <div className="featured-text text-center text-lg-left">
@@ -31,7 +31,7 @@ const Project: React.FC = () => {
 
                 <div className="row justify-content-center no-gutters mb-5 mb-lg-0">
                     <div className="col-lg-6">
-                        <img className="img-fluid" src="../src/components/project/ProductManager.png" alt=""></img>
+                        <img className="img-fluid" src={ProductManagerImg} alt=""></img>
                     </div>
                     <div className="col-lg-6">
                         <div className="bg-black text-center h-100 project">
@@ -56,7 +56,7 @@ const Project: React.FC = () => {
 
                 <div className="row justify-content-center no-gutters">
                     <div className="col-lg-6">
-                        <img className="img-fluid" src="../src/components/project/WeatherApplication.png" alt=""></img>
+                        <img className="img-fluid" src={WeatherApplication} alt=""></img>
                     </div>
                     <div className="col-lg-6 order-lg-first">
                         <div className="bg-black text-center h-100 project">

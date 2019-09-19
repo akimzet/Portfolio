@@ -34,7 +34,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     // Files
-                    test: /\.(pdf|png|svg|jpg|jpeg|gif)$/,
+                    test: /\.(png|jpe?g|pdf)$/i,
                     loader: 'file-loader',
                     options: {
                         name: '[path][name].[ext]',

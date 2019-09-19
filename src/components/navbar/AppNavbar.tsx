@@ -27,7 +27,6 @@ export default class AppNavbar extends React.Component<{}, State> {
         });
     }
     render() {
-        console.log(this.state);
         return (
             <Navbar
                 className={`navbar navbar-expand-lg navbar-light fixed-top ${this.state.activeClass}`}

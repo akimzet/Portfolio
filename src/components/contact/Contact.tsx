@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
 
+import ResumeFile from './Resume-AK.pdf';
+
 const Contact: React.FC = () => {
     return (
         <section className="contact-section bg-black">
@@ -53,7 +55,7 @@ const Contact: React.FC = () => {
                                         className="contact-btn-text"
                                         download="Resume-AK"
                                         target="_blank"
-                                        href="../src/components/contact/Resume-AK.pdf"
+                                        href={ResumeFile}
                                     >
                                         Download
                                     </a>
