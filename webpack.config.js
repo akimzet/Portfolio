@@ -8,7 +8,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = (env, argv) => {
     return {
         entry: './src/index.tsx',
-        devtool: 'inline-source-map',
+        devtool: 'cheap-module-source-map',
 
         output: {
             filename: '[name].[hash].js',
